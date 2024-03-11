@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:insert="~{head}"></div>
+<body>
+<div class="mx-auto" style="width: 1100px;">
+<div th:insert="~{navbar}"></div>
+<form action="/students/add" method="post">
+    <input type="text" id="name" name="name" placeholder="Name">
+    <input type="text" id="surname" name="surname" placeholder="Surname">
+    <input type="text" id="exam" name="exam" placeholder="Insert Exam points">
+    <button>Add student</button>
+</form>
+<table cellpadding="10px" class="">
+    <thead>
+    <th>id</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Exam</th>
+    <th>Mark</th>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${studenty}"
+        th:style="${student.exam < 50? 'color:red; ' : ''}">
+        <td th:text="${student.id}" style="width:10%;"></td>
+        <td th:text="${student.name}" style="width:25%;"></td>
+        <td th:text="${student.surname}" style="width:25%;"></td>
+        <td th:text="${student.exam}" style="width:10%;"></td>
+<!--        <td th:text="${student.mark}"></td>-->
+        <td th:if="${student.exam < 50}" style="width:10%;">F</td>
+        <td th:if="${student.exam < 60 && student.exam >=50}" style="width:10%;">D</td>
+        <td th:if="${student.exam < 75 && student.exam >=60}" style="width:10%;">C</td>
+        <td th:if="${student.exam <= 89 && student.exam >=75}" style="width:10%;">B</td>
+        <td th:if="${student.exam >=90 && student.exam <=100}" style="width:10%;">A</td>
+        <td th:if="${student.exam >100}" style="width:10%;">Incorrect</td>
+    </tr>
+    </tbody>
+</table>
+<div th:insert="~{scripts}"></div>
+</div>
+</body>
+</html>
