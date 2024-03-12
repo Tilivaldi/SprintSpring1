@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:insert="~{head}"></div>
-<body>
+<body><div class="mx-auto" style="width: 1100px;">
 <div th:insert="~{navbar}"></div>
-<h1>asdas</h1>
 
+<form action="/students/add" method="post">
+    <input type="text" id="name" name="name" placeholder="Name">
+    <input type="text" id="surname" name="surname" placeholder="Surname">
+    <input type="text" id="exam" name="exam" placeholder="Insert Exam points">
+    <button>Add student</button>
+</form>
 <div th:insert="~{scripts}"></div>
+</div>
 </body>
 </html>

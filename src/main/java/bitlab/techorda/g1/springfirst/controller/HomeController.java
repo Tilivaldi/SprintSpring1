@@ -26,10 +26,13 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping(value = "/add-student")
-    public String addPage(Model model){
-        List<Student> studentList = DbStudentManager.getStudentList();
-        model.addAttribute("studenty", studentList);
+    @GetMapping( "/add-student")
+    public String addStudent(Model model){
         return "add-student";
+    }
+
+    @GetMapping( "/demo")
+    public String demoPage(Model model){
+        return "demo";
     }
 }
